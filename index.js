@@ -6,16 +6,12 @@ require('dotenv').config()
 const app = express();
 app.use(bodyParser.json());
 
-// let books = data
 
-
-//get request -> To retrieve the data of all books
 
 app.get('/books', (req,res)=>{
   return res.json(books)
 })
 
-//get request -> to retrieve the data of a particular book by id
 
 app.get('/books/:id', (req,res)=>{
   const id = (req.params.id)
@@ -27,8 +23,6 @@ app.get('/books/:id', (req,res)=>{
 
   return res.status(200).json(reqBook)
 })
-
-//post requiest -> to add new data to the data.json file
 
 app.post('/books', (req,res)=>{
 
@@ -50,9 +44,6 @@ app.post('/books', (req,res)=>{
   })
 
 })
-
-//put request -> to update the existing data
-
 app.put('/books/:id', (req, res) => {
   const bookIndex = books.findIndex(b => b.book_id === req.params.id);
 
@@ -65,8 +56,6 @@ app.put('/books/:id', (req, res) => {
 
   res.status(200).json(updatedBook);
 });
-
-// delete request -> delete a book data by id
 app.delete('/books/:id', (req, res) => {
   const bookIndex = books.findIndex(b => b.book_id === req.params.id);
 
