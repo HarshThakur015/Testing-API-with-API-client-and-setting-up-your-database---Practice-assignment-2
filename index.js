@@ -7,7 +7,6 @@ const app = express();
 app.use(bodyParser.json());
 
 
-
 app.get('/books', (req,res)=>{
   return res.json(books)
 })
@@ -22,7 +21,7 @@ app.get('/books/:id', (req,res)=>{
 }
 
   return res.status(200).json(reqBook)
-})
+}) 
 
 app.post('/books', (req,res)=>{
 
@@ -44,6 +43,8 @@ app.post('/books', (req,res)=>{
   })
 
 })
+a
+
 app.put('/books/:id', (req, res) => {
   const bookIndex = books.findIndex(b => b.book_id === req.params.id);
 
@@ -56,6 +57,7 @@ app.put('/books/:id', (req, res) => {
 
   res.status(200).json(updatedBook);
 });
+
 app.delete('/books/:id', (req, res) => {
   const bookIndex = books.findIndex(b => b.book_id === req.params.id);
 
@@ -70,4 +72,4 @@ app.delete('/books/:id', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-})
+});
